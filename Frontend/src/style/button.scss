@@ -1,0 +1,44 @@
+.button {
+    border: none;
+    outline: none;
+    padding-inline: 10.5rem;
+    padding-block: 0.75rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease-in-out;
+
+    &.primary-button {
+        background-color: #e1034d;
+        color: white;
+    }
+
+    &:active {
+        transform: scale(0.9);
+    }
+
+}
+
+.navbar {
+    background-color: #0d1117;
+    height: 5vh;
+
+
+.logout-btn {
+    background-color: #e1034d;
+    padding: 2rem;
+    padding-block: 0.5rem;
+    float: right;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    right: 1rem;
+    top: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+   
+    &:active{
+        transform: scale(0.99);
+    }
+
+}}
