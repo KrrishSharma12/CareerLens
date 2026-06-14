@@ -29,32 +29,41 @@ const Home = () => {
      */
 
     const handleSubmit = async () => {
-        if (!fileName) {
-            setError("Resume is required!");
-            return;
-        }
-
-        if (!jobDescription.trim()) {
-            setError("Job description is required!");
-            return;
-        }
-        if (!selfDescription.trim()) {
-            setError("Self description is required!")
-            return
-        }
-
-        setError("");
         try {
+            if (!fileName) {
+                setError("Resume is required!");
+                return;
+            }
+
+            if (!jobDescription.trim()) {
+                setError("Job description is required!");
+                return;
+            }
+            if (!selfDescription.trim()) {
+                setError("Self description is required!")
+                return
+            }
+
+            if (!resume) {
+                setError("Please upload your resume before submitting.");
+                return;
+            }
+
+            setError("");
             const data = await generateReport({ jobDescription, selfDescription, resumeFile: resume });
+            if (!data) {
+                setError("Unable to generate report. Please try again.");
+                return;
+            }
+
             console.log(data);
             navigate(`/interview/${data._id}`)
-
         } catch (error) {
-            setError(error.message)
+            const message = error?.response?.data?.message || error?.message || "An unexpected error occurred.";
+            setError(message);
         }
+    }
 
-
-    };
     if (loading) {
         return (
             <main className='loading-screen'>
@@ -93,9 +102,10 @@ const Home = () => {
         e.preventDefault();
         const file = e.dataTransfer.files[0];
 
-
         if (file && file.type === "application/pdf") {
             setFileName(file.name);
+            setResume(file);
+            setError("");
         } else {
             alert("Please upload a PDF file");
         }

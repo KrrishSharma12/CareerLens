@@ -92,26 +92,30 @@ Return ONLY valid JSON in this format:
       "focus": "string",
       "tasks": ["string"]
     }
-  ]
-    "title":"string
+  ],
+  "title": "string"
 }
 
 Return JSON only. No explanation.
 `;
-
-
 
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
     contents: prompt,
     config: {
       responseMimeType: "application/json",
-
     },
   });
 
+  const text = response.text?.trim();
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch (parseError) {
+    console.error('AI response parsing failed:', text);
+    throw new Error('AI returned invalid JSON.');
+  }
 
-  const json = JSON.parse(response.text);
   const validated = interviewReportSchema.parse(json);
   return validated;
 

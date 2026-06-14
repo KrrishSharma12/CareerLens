@@ -18,3 +18,174 @@ body,
 .highlight{
     color: #d20d3b;
 }
+
+/* =========================
+   Responsive overrides
+   Tablet (<=1024px) and Mobile (<=600px)
+   Keep original design intact; only add overrides
+   ========================= */
+
+@media (max-width: 1024px) {
+    html, body, #root {
+        overflow-x: hidden;
+    }
+
+    /* Forms */
+    main .form-container {
+        max-width: 420px;
+        padding: 0 1rem;
+    }
+
+    /* Global buttons */
+    .button {
+        padding-inline: 2.5rem !important;
+    }
+
+    /* Dashboard: stack panels vertically on narrower screens */
+    .dashboard {
+        width: 100% !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .dashboard .left,
+    .dashboard .right {
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        border-radius: 0.75rem !important;
+    }
+
+    .heading, .sub-heading {
+        padding: 0.5rem 1rem;
+    }
+
+    /* Interview layout: make columns stack */
+    .interview-layout {
+        flex-direction: column !important;
+        max-width: 100% !important;
+    }
+
+    .interview-nav,
+    .interview-sidebar {
+        width: 100% !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        padding: 0.5rem 0.75rem !important;
+    }
+
+    .interview-content {
+        padding: 1rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    html, body {
+        font-size: 14px;
+    }
+
+    /* Buttons tighten up */
+    .button {
+        padding-inline: 1.5rem !important;
+        padding-block: 0.6rem !important;
+        font-size: 0.95rem !important;
+    }
+
+    /* Auth form on small screens */
+    main {
+        padding: 0.75rem !important;
+    }
+
+    .form-container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Reduce nav/sidebar footprint */
+    .interview-nav .interview-nav__item,
+    .interview-sidebar {
+        font-size: 0.85rem !important;
+    }
+
+    /* Prevent any horizontal overflow due to long labels */
+    .interview-nav__label,
+    .match-score__label,
+    .skill-gaps__label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* ===== Additional mobile tweaks ===== */
+    .heading {
+        min-height: 8vh !important;
+        padding: 0.5rem 0.75rem !important;
+        align-items: center !important;
+    }
+
+    .heading p {
+        font-size: 1rem !important;
+        margin: 0 !important;
+    }
+
+    .sub-heading {
+        max-width: 100% !important;
+        padding: 0.25rem 0.75rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Dashboard panel sizing */
+    .dashboard {
+        gap: 0.75rem !important;
+        padding: 0 0.5rem !important;
+    }
+
+    .dashboard .left,
+    .dashboard .right {
+        min-height: auto !important;
+        height: auto !important;
+        padding: 0.75rem !important;
+    }
+
+    /* Make the job description and textareas smaller on mobile */
+    .jobDescription { font-size: 0.85rem !important; gap: 6px !important; }
+    .dashboard .left .lower textarea,
+    .self-Description {
+        height: auto !important;
+        min-height: 140px !important;
+        max-height: 260px !important;
+        width: 100% !important;
+    }
+
+    /* Ensure generate/download buttons fit container */
+    .Download-button,
+    .button,
+    .button.primary-button {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-inline: 1rem !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Bottom bar adjustments */
+    .bottom {
+        width: 100% !important;
+        margin-top: 0 !important;
+        padding-inline: 0.75rem !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        align-items: center !important;
+    }
+
+    .bottom small { font-size: 0.75rem !important; }
+
+    /* reduce paddings for interview layout content */
+    .interview-layout { padding: 0 !important; }
+    .interview-content { padding: 0.75rem !important; }
+}
