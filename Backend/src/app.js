@@ -4,7 +4,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 
 app.use(cors({
-    origin: "career-lens-bykrish.vercel.app",
+    origin: "https://career-lens-bykrish.vercel.app",
     credentials: true
 }))
 app.use(express.json());
