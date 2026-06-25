@@ -3,8 +3,13 @@ const app = express();
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://career-lens-bykrish.vercel.app"
+]
+
 app.use(cors({
-    origin: "https://career-lens-bykrish.vercel.app",
+    origin: allowedOrigins,
     credentials: true
 }))
 app.use(express.json());
